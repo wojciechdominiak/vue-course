@@ -9,6 +9,7 @@
       <li>Phone: {{ phoneNumber }}</li>
       <li>Email: {{ emailAdress }}</li>
     </ul>
+    <button @click="$emit('delete', id)">Delete</button>
   </li>
 </template>
 
@@ -28,6 +29,7 @@ export default {
       }, */
     },
   },
+  emits: ["toggle-friend", "delete"],
   data() {
     return {
       detailsAreVisible: false,
