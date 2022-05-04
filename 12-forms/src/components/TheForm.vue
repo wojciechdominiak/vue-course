@@ -93,7 +93,7 @@
       </div>
     </div>
     <div class="form-control">
-      <RatingControl />
+      <RatingControl v-model="rating" />
     </div>
     <div class="form-control">
       <input
@@ -119,6 +119,7 @@ export default {
   },
   data() {
     return {
+      rating: null,
       userName: '',
       userAge: null,
       referrer: 'wom',
@@ -144,6 +145,9 @@ export default {
       this.how = null;
       console.log('Agree?');
       console.log(this.confirm);
+      console.log('Rating');
+      console.log(this.rating);
+      this.rating = null;
     },
     validateInput() {
       if (this.userName === '') {
