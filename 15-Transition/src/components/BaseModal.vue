@@ -26,11 +26,11 @@ export default {
   }
 }
 
-.modal-enter.active {
+.modal-enter-active {
   animation: modal 0.3s ease-out;
 }
 
-.modal-leave.active {
+.modal-leave-active {
   animation: modal 0.3s ease-in;
 }
 
@@ -57,15 +57,5 @@ dialog {
   z-index: 100;
   border: none;
   /* animation: modal 0.3s ease-out forwards; */
-}
-@keyframes modal {
-  from {
-    opacity: 0;
-    transform: translateY(-50px) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0px) scale(1);
-  }
 }
 </style>
