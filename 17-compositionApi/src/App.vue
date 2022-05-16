@@ -1,40 +1,49 @@
 <template>
   <section class="container">
     <h1>{{ title }}</h1>
-    <h2>{{ name }}</h2>
-    <h3>{{ user.age }}</h3>
+    <user-data
+      :firstName="firstName"
+      :lastName="lastName"
+      :age="user.age"
+    ></user-data>
     <button @click="change">Change</button>
     <div>
       <input type="text" placeholder="First name" v-model="firstName" />
-      <input type="text" placeholder="Last name" v-model="lastName" />
+      <input type="text" placeholder="Last name" ref="lastNameInput" />
+      <button @click="setLastName">Set name</button>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch } from 'vue';
+import UserData from './components/UserData.vue';
+import { ref, reactive, /* computed */ watch } from 'vue';
 
 const title = ref('Composition API');
 const firstName = ref('');
 const lastName = ref('');
+const lastNameInput = ref(null);
 
 const user = reactive({
   age: 31,
 });
 
-
-watch([firstName, lastName], function(newValues, oldValues) {
+watch([firstName, lastName], function (newValues, oldValues) {
   console.log('Old ' + oldValues);
   console.log('New ' + newValues);
 });
 
-const name = computed(() => {
+/* const name = computed(() => {
   return firstName.value + ' ' + lastName.value;
-});
+}); */
 
 function change() {
   user.age = user.age + 2;
   title.value = 'Great';
+}
+
+function setLastName() {
+  lastName.value = lastNameInput.value.value;
 }
 </script>
 
