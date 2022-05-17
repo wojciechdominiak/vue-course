@@ -4,11 +4,42 @@
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue';
+import {
+  defineProps,
+  computed,
+  inject,
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated,
+  onBeforeUnmount,
+  onUnmounted,
+} from 'vue';
+
 const props = defineProps({
   firstName: String,
   lastName: String,
-  age: Number,
+});
+
+const age = inject('age');
+
+onBeforeMount(function () {
+  console.log('beforemount');
+});
+onMounted(function () {
+  console.log('onMounted');
+});
+onBeforeUpdate(function () {
+  console.log('beforeupdate');
+});
+onUpdated(function () {
+  console.log('onUpdated');
+});
+onBeforeUnmount(function () {
+  console.log('beforeUnmount');
+});
+onUnmounted(function () {
+  console.log('Unmonted');
 });
 
 const fullName = computed(() => {

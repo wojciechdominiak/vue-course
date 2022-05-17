@@ -1,10 +1,9 @@
 <template>
   <section class="container">
     <h1>{{ title }}</h1>
-    <user-data
+    <user-data v-if="user.age<32"
       :firstName="firstName"
       :lastName="lastName"
-      :age="user.age"
     ></user-data>
     <button @click="change">Change</button>
     <div>
@@ -17,7 +16,7 @@
 
 <script setup>
 import UserData from './components/UserData.vue';
-import { ref, reactive, /* computed */ watch } from 'vue';
+import { ref, reactive, /* computed */ watch, provide } from 'vue';
 
 const title = ref('Composition API');
 const firstName = ref('');
@@ -27,6 +26,8 @@ const lastNameInput = ref(null);
 const user = reactive({
   age: 31,
 });
+
+provide('age', user.age);
 
 watch([firstName, lastName], function (newValues, oldValues) {
   console.log('Old ' + oldValues);
